@@ -87,7 +87,7 @@ displayFaceBox = (box) => {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input }); //3. i deklarojm ktu
-      fetch('https://sheltered-waters-28891.herokuapp.com//imageurl', { //lidhet me serverin 
+      fetch('https://sheltered-waters-28891.herokuapp.com/imageurl', { //lidhet me serverin 
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ displayFaceBox = (box) => {
 
     .then(response => { 
       if (response) {
-        fetch('https://sheltered-waters-28891.herokuapp.com//image', { //lidhet me serverin 
+        fetch('https://sheltered-waters-28891.herokuapp.com/image', { //lidhet me serverin 
           method: 'put',
           headers: {
             'Content-Type': 'application/json',

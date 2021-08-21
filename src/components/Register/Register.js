@@ -22,31 +22,26 @@ class Register extends React.Component {
 	onPasswordChange = (event) => {    //per me mor vlerat e inputeve
 		this.setState({password: event.target.value})
 	}
+	
 
 	onSubmitSignIn = () => {
-		// kjo bon lidhjen front-end me back-end
-		fetch('https://sheltered-waters-28891.herokuapp.com/register', {
-			method: 'post',
-			headers: {
-				'Content-Type': 'application/json',
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Credentials" : true
-			},
-			'mode' : 'no-cors',
-			body: JSON.stringify({
-				email: this.state.email,
-				password: this.state.password,
-				name: this.state.name
-			})
-		})
-		.then(response => response.json()) 
-		.then(user => {
-			if(user.id) {
-				this.props.loadUser(user)
-		        this.props.onRouteChange('home'); //this.props. --> bohet per me mar disa props
-			}
-		})
-	}
+    fetch('https://sheltered-waters-28891.herokuapp.com/register', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        name: this.state.name
+      })
+    })
+      .then(response => response.json())
+      .then(user => {
+        if (user.id) {
+          this.props.loadUser(user)
+          this.props.onRouteChange('home');
+        }
+      })
+  }
 	render() {
 		return(
 			<article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">

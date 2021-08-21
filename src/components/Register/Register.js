@@ -27,21 +27,16 @@ class Register extends React.Component {
 		// kjo bon lidhjen front-end me back-end
 		fetch('https://sheltered-waters-28891.herokuapp.com/register', {
 			method: 'post',
-			headers: {
-				'Content-Type': 'application/json',
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Credentials" : true
-			},
-			'mode' : 'no-cors',
+			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
-				email: this.state.email,
-				password: this.state.password,
-				name: this.state.name
-			})
-		})
+		        email: this.state.email,
+		        password: this.state.password,
+		        name: this.state.name
+      })
+    })
 		.then(response => response.json()) 
 		.then(user => {
-			if(user.id) {
+			if (user) { //kjo iste user.id
 				this.props.loadUser(user)
 		        this.props.onRouteChange('home'); //this.props. --> bohet per me mar disa props
 			}
